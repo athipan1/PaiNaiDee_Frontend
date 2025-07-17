@@ -1,1 +1,19 @@
-import { useEffect, useState } from "react"; import "./App.css";  type Attraction = {   id: number;   name: string;   province: string;   image_url?: string; };  function App() {   const [attractions, setAttractions] = useState<Attraction[]>([]);   const [loading, setLoading] = useState(true);    useEffect(() => {     fetch("/api/attractions")       .then((res) => res.json())       .then((data) => {         setAttractions(data);         setLoading(false);       })       .catch(() => setLoading(false));   }, []);    return (     <div className="container">       <h1>ไปไหนดี 🌄</h1>       {loading ? (         <p>กำลังโหลดข้อมูลสถานที่ท่องเที่ยว...</p>       ) : (         <div className="grid">           {attractions.map((place) => (             <div key={place.id} className="card">               <img                 src={place.image_url ?? "/default.jpg"}                 alt={place.name}                 loading="lazy"               />               <h2>{place.name}</h2>               <p>{place.province}</p>             </div>           ))}         </div>       )}     </div>   ); }  export default App;
+import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import HomePage from "./pages/HomePage";
+import { AttractionProvider } from "./contexts/AttractionContext";
+
+function App() {
+  return (
+    <AttractionProvider>
+      <Header />
+      <main>
+        <HomePage />
+      </main>
+      <Footer />
+    </AttractionProvider>
+  );
+}
+
+export default App;
