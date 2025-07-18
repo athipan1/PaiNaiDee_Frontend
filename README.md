@@ -1,73 +1,53 @@
-<<<<<<< HEAD
-# React + TypeScript + Vite
+# PaiNaiDee_Frontend (ไปไหนดี)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+โปรเจกต์นี้เป็นส่วน Frontend ของแอปพลิเคชัน "ไปไหนดี" ที่ช่วยให้ผู้ใช้สามารถค้นหาสถานที่ท่องเที่ยวที่น่าสนใจในประเทศไทย
 
-Currently, two official plugins are available:
+## 🌟 ภาพรวม
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+"ไปไหนดี" เป็นแอปพลิเคชันสำหรับนักท่องเที่ยวที่ต้องการค้นหาและวางแผนการเดินทางในประเทศไทย โดยมีฟังก์ชันหลักในการแสดงข้อมูลสถานที่ท่องเที่ยว, การค้นหา, และการนำทาง
 
-## Expanding the ESLint configuration
+## ✨ ฟีเจอร์หลัก
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+*   **ค้นหาสถานที่ท่องเที่ยว:** ค้นหาสถานที่จากชื่อ, ประเภท, หรือจังหวัด
+*   **ดูข้อมูลสถานที่:** แสดงรายละเอียดของสถานที่ท่องเที่ยว เช่น รูปภาพ, คำอธิบาย, เวลาทำการ, และตำแหน่งบนแผนที่
+*   **การนำทาง:** เชื่อมต่อกับแอปพลิเคชันแผนที่เพื่อนำทางไปยังสถานที่ที่เลือก
+*   **หลายภาษา:** รองรับทั้งภาษาไทยและภาษาอังกฤษ
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 📦 เทคโนโลยีที่ใช้
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+*   **React 18 + Vite + TypeScript:** ไลบรารีหลักสำหรับการสร้าง User Interface
+*   **React Router DOM:** สำหรับการจัดการ Routing ในแอปพลิเคชัน
+*   **Tailwind CSS:** เฟรมเวิร์ก CSS สำหรับการออกแบบและสร้างสไตล์ที่รวดเร็ว
+*   **react-i18next:** สำหรับการจัดการเนื้อหาหลายภาษา (Internationalization)
+*   **Axios:** สำหรับการส่ง HTTP requests เพื่อสื่อสารกับ API Server
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## ⚙️ วิธีติดตั้งและเริ่มต้นใช้งาน (Local Development)
+
+1.  **Clone a repository:**
+    ```bash
+    git clone https://github.com/your-username/PaiNaiDee_Frontend.git
+    cd PaiNaiDee_Frontend
+    ```
+
+2.  **ติดตั้ง Dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **เริ่มต้น Development Server:**
+    ```bash
+    npm run dev
+    ```
+    แอปพลิเคชันจะพร้อมใช้งานที่ `http://localhost:5173`
+
+## 🚀 การ Build สำหรับ Production
+
+```bash
+npm run build
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+คำสั่งนี้จะสร้างไฟล์สำหรับ Production ในโฟลเดอร์ `dist`
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🤝 การสนับสนุน
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-=======
-# PaiNaiDee_Frontend
->>>>>>> 3accbff4c707853a9eac9365bccd5c7946c92d20
+หากคุณพบปัญหาหรือมีข้อเสนอแนะ, กรุณาเปิด Issue ใน Repository นี้
