@@ -13,7 +13,7 @@ export const handlers = [
 
     return HttpResponse.json(
       {
-        ...newReview,
+        ...(newReview as object),
         id: new Date().getTime(),
       },
       { status: 201 }
