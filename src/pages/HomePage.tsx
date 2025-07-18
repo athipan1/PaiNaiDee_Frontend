@@ -5,6 +5,7 @@ import { AttractionContext } from "../contexts/AttractionContext";
 import { useTranslation } from "react-i18next";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ErrorMessage from "../components/ErrorMessage";
+import ReviewForm from "../components/ReviewForm";
 
 function HomePage() {
   const { attractions, loading, error, retry } = useContext(AttractionContext);
@@ -33,9 +34,18 @@ function HomePage() {
   };
 
   return (
-    <div className="container">
-      <h1>{t("welcome")} 🌄</h1>
-      {renderContent()}
+    <div className="container mx-auto p-4">
+      <h1 className="text-4xl font-bold text-center my-8">{t("welcome")} 🌄</h1>
+
+      <div className="grid md:grid-cols-3 gap-8">
+        <div className="md:col-span-2">
+          <h2 className="text-3xl font-semibold mb-4">{t("attractionsTitle", "Popular Attractions")}</h2>
+          {renderContent()}
+        </div>
+        <div className="md:col-span-1">
+          <ReviewForm />
+        </div>
+      </div>
     </div>
   );
 }
