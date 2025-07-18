@@ -1,9 +1,9 @@
-name: Deploy React to GitHub Pages
+name: Deploy to GitHub Pages
 
 on:
   push:
     branches:
-      - main  # หรือ branch ที่คุณใช้
+      - main
 
 jobs:
   build-and-deploy:
