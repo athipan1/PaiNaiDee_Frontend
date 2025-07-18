@@ -27,7 +27,7 @@ const ReviewForm = () => {
       setName("");
       setRating(5);
       setComment("");
-    } catch (err) {
+    } catch {
       setError(t("reviewForm.submitError"));
     } finally {
       setLoading(false);
