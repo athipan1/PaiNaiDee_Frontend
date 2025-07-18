@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext, useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 
 type Attraction = {
@@ -11,13 +11,17 @@ type Attraction = {
 type AttractionContextType = {
   attractions: Attraction[];
   loading: boolean;
+  error: string | null;
   search: (term: string) => void;
+  retry: () => void;
 };
 
 export const AttractionContext = createContext<AttractionContextType>({
   attractions: [],
   loading: true,
+  error: null,
   search: () => {},
+  retry: () => {},
 });
 
 type Props = {
@@ -28,17 +32,32 @@ export function AttractionProvider({ children }: Props) {
   const [attractions, setAttractions] = useState<Attraction[]>([]);
   const [filteredAttractions, setFilteredAttractions] = useState<Attraction[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
+  const fetchAttractions = useCallback(() => {
+    setLoading(true);
+    setError(null);
     fetch("/api/attractions")
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Failed to fetch attractions");
+        }
+        return res.json();
+      })
       .then((data) => {
         setAttractions(data);
         setFilteredAttractions(data);
         setLoading(false);
       })
-      .catch(() => setLoading(false));
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
   }, []);
+
+  useEffect(() => {
+    fetchAttractions();
+  }, [fetchAttractions]);
 
   const search = (term: string) => {
     const filtered = attractions.filter((attraction) =>
@@ -47,8 +66,12 @@ export function AttractionProvider({ children }: Props) {
     setFilteredAttractions(filtered);
   };
 
+  const retry = () => {
+    fetchAttractions();
+  };
+
   return (
-    <AttractionContext.Provider value={{ attractions: filteredAttractions, loading, search }}>
+    <AttractionContext.Provider value={{ attractions: filteredAttractions, loading, error, search, retry }}>
       {children}
     </AttractionContext.Provider>
   );
