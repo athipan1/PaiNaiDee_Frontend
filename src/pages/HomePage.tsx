@@ -38,9 +38,12 @@ function HomePage() {
       <h1 className="text-4xl font-bold text-center my-8 font-kanit text-primary">{t("welcome")} 🌄</h1>
 
       <div className="grid md:grid-cols-3 gap-8">
-        <div className="md:col-span-3">
+        <div className="md:col-span-2">
           <h2 className="text-3xl font-semibold mb-4 font-kanit text-secondary">{t("attractionsTitle", "Popular Attractions")}</h2>
           {renderContent()}
+        </div>
+        <div className="md:col-span-1">
+          <ReviewForm />
         </div>
       </div>
     </div>
