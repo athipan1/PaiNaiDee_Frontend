@@ -25,7 +25,7 @@ function HomePage() {
     }
 
     return (
-      <div className="grid">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {attractions.map((place) => (
           <AttractionCard key={place.id} attraction={place} />
         ))}
@@ -35,11 +35,11 @@ function HomePage() {
 
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-4xl font-bold text-center my-8">{t("welcome")} 🌄</h1>
+      <h1 className="text-4xl font-bold text-center my-8 font-kanit text-primary">{t("welcome")} 🌄</h1>
 
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2">
-          <h2 className="text-3xl font-semibold mb-4">{t("attractionsTitle", "Popular Attractions")}</h2>
+          <h2 className="text-3xl font-semibold mb-4 font-kanit text-secondary">{t("attractionsTitle", "Popular Attractions")}</h2>
           {renderContent()}
         </div>
         <div className="md:col-span-1">
